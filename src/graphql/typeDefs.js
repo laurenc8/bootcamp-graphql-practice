@@ -3,14 +3,18 @@ const { gql } = require('apollo-server-express')
 module.exports = gql`
   type Query {
     # welcome: String!
-    author(id: ID!): Author!
+    allBooks: [Book!]!
+    allPublishers: [Publisher!]!
+    allAuthors: [Author!]!
+    book(bookId: ID!): Book!
+    author(authorId: ID!): Author!
     bestsellers: [Book!]
-    bigPublishers: [Publisher!]
+    publisher(publisherId: ID!): Publisher!
     searchAuthors(input: String!): [Author!]!
   }
   type Mutation {
-    addAuthor(input: addAuthorInput): Author!
-    deletePublisher(input: deletePublisherInput): Publisher!
+    createBook(input: CreateBookInput!): Book!
+    createAuthor(input: CreateAuthorInput!): Author!
   }
   type Address {
     id: ID!
@@ -18,6 +22,7 @@ module.exports = gql`
     city: String!
     state: String!
     zip: String!
+    createdAt: String!
   }
   type Publisher {
     id: ID!
@@ -50,19 +55,21 @@ module.exports = gql`
     publisher: Publisher!
     createdAt: String!
   }
-  input addAuthorInput {
+  input CreateBookInput {
+    title: String!
+    language: String!
+    numPages: Int
+    datePublished: Int
+    bestseller: Boolean
+    authorId: String!
+    publisherId: String!
+  }
+  input CreateAuthorInput {
     firstName: String!
     lastName: String!
     age: Int
     email: String
     numBooksPublished: Int
-    address: Address!
-  }
-  input deletePublisherInput {
-    id: ID!
-    company: String!
-    phoneNumber: String!
-    numBooksPublished: Int!
     address: Address!
   }
 `
