@@ -1,3 +1,4 @@
+/* eslint-disable no-multiple-empty-lines */
 
 exports.up = knex => knex.schema.createTable('authors', table => {
   table

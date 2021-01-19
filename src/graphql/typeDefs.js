@@ -4,13 +4,13 @@ module.exports = gql`
   type Query {
     # welcome: String!
     allBooks: [Book!]!
-    allPublishers: [Publisher!]!
+    # allPublishers: [Publisher!]!
     allAuthors: [Author!]!
-    book(bookId: ID!): Book!
+    # book(bookId: ID!): Book!
     author(authorId: ID!): Author!
-    bestsellers: [Book!]
-    publisher(publisherId: ID!): Publisher!
-    searchAuthors(input: String!): [Author!]!
+    # bestsellers: [Book!]
+    # publisher(publisherId: ID!): Publisher!
+    # searchAuthors(input: String!): [Author!]!
   }
   type Mutation {
     createBook(input: CreateBookInput!): Book!
@@ -70,6 +70,6 @@ module.exports = gql`
     age: Int
     email: String
     numBooksPublished: Int
-    address: Address!
+    addressId: String!
   }
 `
