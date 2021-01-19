@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 
-const Book = require('../../models/Book')
-const Author = require('../../models/Author')
-const Publisher = require('../../models/Publisher')
 const Address = require('../../models/Address')
+const Publisher = require('../../models/Publisher')
+const Author = require('../../models/Author')
+const Book = require('../../models/Book')
 
 const allBooks = async () => {
   const books = await Book.query()

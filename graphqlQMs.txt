@@ -1,0 +1,124 @@
+query allAuthors{
+  allAuthors {
+    id
+    firstName
+    lastName
+    age
+    email
+    books {
+      title
+      language
+      numPages
+    }
+    address {
+      street
+      city
+      street
+      zip
+    }
+  }
+}
+
+---
+
+query allBooks {
+  allBooks {
+    id
+    title
+    language
+    numPages
+    bestseller
+    author {
+      firstName
+      lastName
+      age
+      email
+    }
+    publisher {
+      company
+      phoneNumber
+      address {
+        street
+        city
+        state
+        zip
+      }
+    }
+  }
+}
+
+---
+
+query author ($id: ID!) {
+  author (authorId: $id) {
+    firstName
+    lastName
+    age
+    email
+    numBooksPublished
+  }
+}
+
+{
+  "id": "299f238f-1330-4ac9-a183-ccc5701dcc43"
+}
+
+---
+
+mutation createAuthor($CreateAuthorInput: CreateAuthorInput!) {
+  createAuthor (input: $CreateAuthorInput) {
+    id
+    firstName
+    lastName
+    age
+    email
+    numBooksPublished
+    address {
+      street
+      city
+      state
+      zip
+    }
+  }
+}
+
+{
+  "CreateAuthorInput": {
+    "firstName": "Jane",
+    "lastName": "Austen",
+    "age": 41,
+    "email": "Jane.Austen@gmail.com",
+    "numBooksPublished": 13,
+    "addressId": "35c6ec80-99fb-4e27-9dd5-91b858c7806c"
+  }
+}
+
+---
+
+mutation createBook($CreateBookInput: CreateBookInput!) {
+  createBook (input: $CreateBookInput) {
+    title
+    language
+    numPages
+    datePublished
+    bestseller
+    author {
+      firstName
+      lastName
+    }
+    publisher {
+      company
+    }
+  }
+}
+
+{
+  "CreateBookInput": {
+    "title": "Pride and Prejudice",
+    "language": "en",
+    "numPages": 480,
+    "bestseller": true,
+    "authorId": "58dcf175-d34a-4e0a-942e-72dbd1195e0c",
+    "publisherId": "b1877f1f-f58a-4e4d-b466-57bc826f6a40"
+  }
+}

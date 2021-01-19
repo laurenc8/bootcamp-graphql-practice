@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 
+const Address = require('../../models/Address')
 const Author = require('../../models/Author')
 const Book = require('../../models/Book')
-const Address = require('../../models/Address')
 
 const allAuthors = async () => {
   try {
